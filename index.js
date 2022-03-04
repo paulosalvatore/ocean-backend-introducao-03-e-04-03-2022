@@ -55,4 +55,16 @@ app.put("/herois/:id", function (req, res) {
     res.send("Item atualizado com sucesso!");
 });
 
+// [DELETE] Delete (Remover)
+app.delete("/herois/:id", function (req, res) {
+    // Recebemos o ID que será excluído
+    const id = req.params.id - 1;
+
+    // Excluimos o ID da lista
+    delete herois[id];
+
+    // Enviamos uma mensagem de sucesso
+    res.send("Item removido com sucesso!");
+});
+
 app.listen(3000);
