@@ -1,6 +1,10 @@
 const express = require("express");
 const app = express();
 
+// Sinaliza para o express entender o JSON no corpo das requisições
+app.use(express.json());
+
+// Endpoint principal
 app.get("/", function (req, res) {
     res.send("Hello World");
 });
@@ -22,6 +26,18 @@ app.get("/herois/:id", function (req, res) {
     const item = herois[id];
 
     res.send(item);
+});
+
+// [POST] Create (Criar)
+app.post("/herois", function (req, res) {
+    // Recebemos o item no corpo da requisição
+    const item = req.body.nome;
+
+    // Adicionamos o item na lista
+    herois.push(item);
+
+    // Enviamos uma resposta de sucesso
+    res.send("Item adicionado com sucesso!");
 });
 
 app.listen(3000);
