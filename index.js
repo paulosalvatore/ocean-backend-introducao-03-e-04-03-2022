@@ -40,4 +40,19 @@ app.post("/herois", function (req, res) {
     res.send("Item adicionado com sucesso!");
 });
 
+// [PUT] Update (Atualizar)
+app.put("/herois/:id", function (req, res) {
+    // Recebemos o ID que será atualizado
+    const id = req.params.id - 1;
+
+    // Pegamos o novo item que foi enviado no corpo da requisição
+    const novoItem = req.body.nome;
+
+    // Atualizamos a lista atual com a nova informação
+    herois[id] = novoItem;
+
+    // Enviamos uma mensagem de sucesso
+    res.send("Item atualizado com sucesso!");
+});
+
 app.listen(3000);
